@@ -57,6 +57,10 @@ knitr::opts_chunk$set(echo = FALSE,
 star <- import(here("data","star.csv"))
 View(star)
 
+glimpse(star)
+?summarise()
+summarise(star)
+
 ```
 
 
