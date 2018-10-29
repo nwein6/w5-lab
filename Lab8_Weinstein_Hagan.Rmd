@@ -22,7 +22,7 @@ abstract:
   
 keywords          : "Halloween, Caregiver-infant interaction, Development, Demo"
 
-bibliography      : ["r-references.bib"]
+bibliography      : ["references.bib"]
 
 floatsintext      : no
 figurelist        : no
@@ -36,6 +36,8 @@ documentclass     : "apa6"
 classoption       : "man"
 output            : papaja::apa6_pdf
 ---
+
+     Here is an example of using an in-text citation with reference to (@want2002children). @horner2005causal may report findings relevant to the earlier referenced paper (see @want2002children). 
 
 ```{r setup, include = FALSE}
 library("papaja")
