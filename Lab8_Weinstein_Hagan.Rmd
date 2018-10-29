@@ -96,3 +96,24 @@ r_refs(file = "r-references.bib")
 
 <div id = "refs"></div>
 \endgroup
+
+```{r c4}
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+star %>%
+  group_by(sex, frl) %>%
+  summarize(math_mean = mean(tmathss), math_sd = sd(tmathss), rdg_mean = mean(treadss), rdg_sd = sd(treadss))
+
+```
+
+```{r c5}
+head(star)
+ggplot(star, aes(x = totexp, y = tmathss)) +
+  geom_point() +
+  geom_smooth(aes(color = frl),
+              method = "lm") +
+  xlab("Teacher Experience(years)")+
+  ylab("Total Math Scale Score")
+
+```
