@@ -43,10 +43,20 @@ output            : papaja::apa6_pdf
 library("papaja")
 ```
 
-```{r analysis-preferences}
-# Seed for random number generation
-set.seed(42)
-knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
+```{r, include = FALSE}
+library(tidyverse)
+library(dplyr)
+library(knitr)
+library(here)
+library(rio)
+#Setting global chunk option
+knitr::opts_chunk$set(echo = FALSE,
+                      fig.width = 6.5, 
+                      fig.height = 8)
+
+star <- import(here("data","star.csv"))
+View(star)
+
 ```
 
 
