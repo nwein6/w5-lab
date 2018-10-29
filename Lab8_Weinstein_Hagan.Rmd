@@ -1,0 +1,82 @@
+---
+title             : "This is a new, spiffy title"
+shorttitle        : "Spiffy running head"
+
+author: 
+  - name          : "Katherine Hagan"
+    affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    address       : "Straub Hall, 1451 Onyx Street"
+    email         : "khagan@uoregon.edu"
+  - name          : "Netanel Weinstein"
+    affiliation   : "1"
+
+affiliation:
+  - id            : "1"
+    institution   : "University of Oregon"
+
+abstract: 
+  Here is an abstract to a paper I am drafting: Maternal touch behaviors form the basis for early mother-infant communication and influence the emergence of the infant’s capacity for emotion regulation. Despite evidence of the primacy of touch in the early caregiving relationship and formation of attachment, little is known about precursors to [individual differences in] maternal touch behaviors. Maternal psychopathology may not only influence maternal touch behaviors, but may also moderate the regulatory effects of touch behaviors on infants. In the present study, behavioral coding of maternal touch and infant gaze behaviors was used to characterize behaviors during the reunion phase of the Still-Face (SF) procedure. Measures of infant respiratory sinus arrhythmia (RSA) during this same reunion were also examined to investigate the possibility that vagal recovery from the stress of the SF varies as a function of maternal, infant-directed touch. Associations between maternal report of trauma symptoms, touch behaviors, and infant RSA were also explored. Mothers spent approximately 55 percent of the SF reunion engaged in infant-directed touch, much of which was marked by affectionate and stimulatory features. While maternal trauma symptoms were unrelated to measures of maternal touch and infant gaze behaviors, maternal report of trauma exposure in childhood demonstrated a marginally significant, negative correlation of modest effect size with total touch on reunion. Expected associations between maternal trauma symptomatology and infant RSA did not hold. Nor did touch behaviors exhibit associations with infant RSA. Psychological and methodological accounts of the null findings are discussed, as are recommendations for programmatic research in the area of maternal touch behaviors, infant emotion regulation, and antecedents to each. 
+  
+  <!-- https://tinyurl.com/ybremelq -->
+  
+keywords          : "Halloween, Caregiver-infant interaction, Development, Demo"
+
+bibliography      : ["r-references.bib"]
+
+floatsintext      : no
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+linenumbers       : no
+mask              : no
+draft             : no
+
+documentclass     : "apa6"
+classoption       : "man"
+output            : papaja::apa6_pdf
+---
+
+```{r setup, include = FALSE}
+library("papaja")
+```
+
+```{r analysis-preferences}
+# Seed for random number generation
+set.seed(42)
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
+```
+
+
+
+# Methods
+We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
+
+## Participants
+
+## Material
+
+## Procedure
+
+## Data analysis
+We used `r cite_r("r-references.bib")` for all our analyses.
+
+
+# Results
+
+# Discussion
+
+
+\newpage
+
+# References
+```{r create_r-references}
+r_refs(file = "r-references.bib")
+```
+
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+<div id = "refs"></div>
+\endgroup
