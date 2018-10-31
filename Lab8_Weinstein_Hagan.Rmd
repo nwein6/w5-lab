@@ -16,9 +16,9 @@ affiliation:
     institution   : "University of Oregon"
 
 abstract: 
-  Here is an abstract to a paper I am drafting: Maternal touch behaviors form the basis for early mother-infant communication and influence the emergence of the infant’s capacity for emotion regulation. Despite evidence of the primacy of touch in the early caregiving relationship and formation of attachment, little is known about precursors to [individual differences in] maternal touch behaviors. Maternal psychopathology may not only influence maternal touch behaviors, but may also moderate the regulatory effects of touch behaviors on infants. In the present study, behavioral coding of maternal touch and infant gaze behaviors was used to characterize behaviors during the reunion phase of the Still-Face (SF) procedure. Measures of infant respiratory sinus arrhythmia (RSA) during this same reunion were also examined to investigate the possibility that vagal recovery from the stress of the SF varies as a function of maternal, infant-directed touch. Associations between maternal report of trauma symptoms, touch behaviors, and infant RSA were also explored. Mothers spent approximately 55 percent of the SF reunion engaged in infant-directed touch, much of which was marked by affectionate and stimulatory features. While maternal trauma symptoms were unrelated to measures of maternal touch and infant gaze behaviors, maternal report of trauma exposure in childhood demonstrated a marginally significant, negative correlation of modest effect size with total touch on reunion. Expected associations between maternal trauma symptomatology and infant RSA did not hold. Nor did touch behaviors exhibit associations with infant RSA. Psychological and methodological accounts of the null findings are discussed, as are recommendations for programmatic research in the area of maternal touch behaviors, infant emotion regulation, and antecedents to each. 
+  "Here is an abstract to a paper I am drafting: Maternal touch behaviors form the basis for early mother-infant communication and influence the emergence of the infant’s capacity for emotion regulation. Despite evidence of the primacy of touch in the early caregiving relationship and formation of attachment, little is known about precursors to [individual differences in] maternal touch behaviors. Maternal psychopathology may not only influence maternal touch behaviors, but may also moderate the regulatory effects of touch behaviors on infants. In the present study, behavioral coding of maternal touch and infant gaze behaviors was used to characterize behaviors during the reunion phase of the Still-Face (SF) procedure. Measures of infant respiratory sinus arrhythmia (RSA) during this same reunion were also examined to investigate the possibility that vagal recovery from the stress of the SF varies as a function of maternal, infant-directed touch. Associations between maternal report of trauma symptoms, touch behaviors, and infant RSA were also explored. Mothers spent approximately 55 percent of the SF reunion engaged in infant-directed touch, much of which was marked by affectionate and stimulatory features. While maternal trauma symptoms were unrelated to measures of maternal touch and infant gaze behaviors, maternal report of trauma exposure in childhood demonstrated a marginally significant, negative correlation of modest effect size with total touch on reunion. Expected associations between maternal trauma symptomatology and infant RSA did not hold. Nor did touch behaviors exhibit associations with infant RSA. Psychological and methodological accounts of the null findings are discussed, as are recommendations for programmatic research in the area of maternal touch behaviors, infant emotion regulation, and antecedents to each." 
   
-  <!-- https://tinyurl.com/ybremelq -->
+  #<!-- https://tinyurl.com/ybremelq -->
   
 keywords          : "Halloween, Caregiver-infant interaction, Development, Demo"
 
@@ -37,7 +37,7 @@ classoption       : "man"
 output            : papaja::apa6_pdf
 ---
 
-     Here is an example of using an in-text citation with reference to (@want2002children). @horner2005causal may report findings relevant to the earlier referenced paper (see @want2002children). 
+Here is an example of using an in-text citation with reference to @want2002children. @horner2005causal may report findings relevant to the earlier referenced paper [see @want2002children]. 
 
 ```{r setup, include = FALSE}
 library("papaja")
@@ -55,10 +55,12 @@ knitr::opts_chunk$set(echo = FALSE,
                       fig.height = 8)
 
 star <- import(here("data","star.csv"))
-View(star)
+
+# Best to remove `View` and `?` calls before knitting
+#View(star)
 
 glimpse(star)
-?summarise()
+#?summarise()
 summarise(star)
 
 ```
@@ -75,10 +77,39 @@ We report how we determined our sample size, all data exclusions (if any), all m
 ## Procedure
 
 ## Data analysis
-We used `r cite_r("r-references.bib")` for all our analyses.
-
+<!-- We used `r cite_r("r-references.bib")` for all our analyses. -->
+<!-- The inline code chunk above tries to get a bunch of references that 
+<!-- aren't actually in your r-references.bib file -->
 
 # Results
+<!-- Put these code chunks next to the relevant text. {papaja} will take care -->
+<!-- of placing them where they should be, as long as you supply a caption -->
+```{r c4, results = "asis"}
+# Specify the results to appear "asis" so the table is rendered properly
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+star %>%
+  group_by(sex, frl) %>%
+  summarize(math_mean = mean(tmathss), 
+            math_sd = sd(tmathss), 
+            rdg_mean = mean(treadss), 
+            rdg_sd = sd(treadss)) %>% 
+  apa_table() # use one of the functions I discussed in class to render an actual table, instead of just numbers
+
+```
+
+```{r c5, fig.cap = "An amazing figure"}
+# Specify figure caption through a chunk option, as above
+#head(star) # This was showing up in your output, which you don't want
+ggplot(star, aes(x = totexp, y = tmathss)) +
+  geom_point() +
+  geom_smooth(aes(color = frl),
+              method = "lm") +
+  xlab("Teacher Experience(years)")+
+  ylab("Total Math Scale Score")
+
+```
 
 # Discussion
 
@@ -96,24 +127,3 @@ r_refs(file = "r-references.bib")
 
 <div id = "refs"></div>
 \endgroup
-
-```{r c4}
-library(dplyr)
-library(tidyverse)
-library(ggplot2)
-star %>%
-  group_by(sex, frl) %>%
-  summarize(math_mean = mean(tmathss), math_sd = sd(tmathss), rdg_mean = mean(treadss), rdg_sd = sd(treadss))
-
-```
-
-```{r c5}
-head(star)
-ggplot(star, aes(x = totexp, y = tmathss)) +
-  geom_point() +
-  geom_smooth(aes(color = frl),
-              method = "lm") +
-  xlab("Teacher Experience(years)")+
-  ylab("Total Math Scale Score")
-
-```
